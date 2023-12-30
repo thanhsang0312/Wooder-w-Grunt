@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Title -->
+    <title>Wooder | CFD Circle</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Meta tag -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Luxestate">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Sang">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="canonical" href="">
+    <!-- Meta tag Facebook -->
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="dest/style.min.css">
+    <link rel="stylesheet" href="dest/fonts.css">
+
+</head>
+
+<body class="homepage">
+    <div class="loading">
+        <div class="loading__inner">
+            <div class="loading__inner--progress">
+                <span class="progress__bar"></span>
+            </div>
+            <div class="loading__inner--percent">20%</div>
+        </div>
+    </div>
+    <header class="header">
+        <div class="container-fluid">
+            <a href="#" class="header__logo">
+                <img src="img/logo-wooder.svg" alt="">
+            </a>
+            <ul class="header__nav">
+                <li><a href="#" class="active">home</a></li>
+                <li><a onclick="scrollToProducts()">products</a></li>
+                <li><a onclick="scrollToVideos()">videos</a></li>
+                <li><a onclick="scrollToAbout()">about</a></li>
+                <li><a onclick="scrollToGallery()">gallery</a></li>
+                <li><a onclick="scrollToNews()">news</a></li>
+            </ul>
+            <div class="header__cta">
+                <div class="header__cta--lang">
+                    <div class="curr">
+                        <span class="curr__text">EN</span>
+                        <img src="img/icon-select.svg" alt="" class="curr__icon">
+                    </div>
+                    <ul class="dropdown">
+                        <li>VI</li>
+                        <li>JP</li>
+                        <li>AU</li>
+                    </ul>
+                </div>
+                <div class="header__cta--signup --btn-yellow" onclick="openSignUp()">SIGN UP</div>
+                <div class="header__cta--hamburger">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="nav-mobile">
+        <ul class="header__nav">
+            <li><a href="#" class="active">home</a></li>
+            <li><a onclick="scrollToProducts()">products</a></li>
+            <li><a onclick="scrollToGallery()">videos</a></li>
+            <li><a onclick="scrollToAbout()">about</a></li>
+            <li><a onclick="scrollToGallery()">gallery</a></li>
+            <li><a onclick="scrollToNews()">news</a></li>
+            <li class="--btn-yellow">Sign up</li>
+        </ul>
+    </nav>
+    <main class="main">
+        <section class="hero">
+            <div class="hero__slider">
+                <div class="hero__slider--item">
+                    <div class="content">
+                        <h2 class="heading --lv1">
+                            Wooder
+                        </h2>
+                        <a href="#" class="btnmain">learn more <img src="img/right-arrow.svg" alt=""></a>
+                    </div>
+                    <picture>
+                        <source media="(max-width:768px)" srcset="img/hero-banner-mb.jpg">
+                        <source media="(max-width:992px)" srcset="img/hero-banner-tablet.jpg">
+                        <img src="img/hero-banner.jpg" alt="">
+                    </picture>
+                </div>
+                <!-- <div class="hero__slider--item">
+                    <div class="content">
+                        <h2 class="heading --lv1">
+                            Furniture
+                        </h2>
+                        <a href="#" class="btnmain">learn more <img src="img/right-arrow.svg" alt=""></a>
+                    </div>
+                    <picture>
+                        <source media="(max-width:992px)" srcset="img/hero-banner-tablet.jpg">
+                        <img src="img/hero-furniture.jpg" alt="">
+                    </picture>
+                </div>
+                <div class="hero__slider--item">
+                    <div class="content">
+                        <h2 class="heading --lv1">
+                            Decor
+                        </h2>
+                        <a href="#" class="btnmain">learn more <img src="img/right-arrow.svg" alt=""></a>
+                    </div>
+                    <picture>
+                        <source media="(max-width:992px)" srcset="img/hero-banner-tablet.jpg">
+                        <img src="img/hero-decor.jpg" alt="">
+                    </picture>
+                </div> -->
+            </div>
+            <div class="hero__bottom">
+                <div class="container-fluid">
+                    <div class="hero__bottom--paging">
+                        <div class="number">
+                            <span class="number__curr">01</span>/
+                            <span class="number__total">03</span>
+                        </div>
+                        <ol class="dots">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ol>
+                    </div>
+                    <div class="hero__bottom--mouse">
+                        <img src="img/icon-mouse.svg" alt="" class="mouse">
+                        <img src="img/down-arrow.svg" alt="" class="arrowdown">
+                    </div>
+                    <div class="hero__bottom--controls controls">
+                        <div class="controls__btn --btn-prev">
+                            <img src="img/twoside-arrow.svg" alt="">
+                        </div>
+                        <div class="controls__btn --btn-next">
+                            <img src="img/twoside-arrow.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="products --pt" id="products">
+            <div class="container">
+                <div class="products__cate">
+                    <div class="textbox --align-left">
+                        <h2 class="heading --lv2">furniture</h2>
+                        <p class="des">Wooder utilizes materials otherwise left behind, rendered useless in their
+                            original intent. By creating new pieces made one rerclaimed barnwood</p>
+                        <a href="#" class="more-btn">
+                            Learn more
+                            <img src="img/right-arrow-w-color.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="products__cate--thumb">
+                        <img src="img/furniture_thumb.jpg" alt="">
+                    </div>
+                </div>
+                <div class="products__cate">
+                    <div class="textbox --align-right">
+                        <h2 class="heading --lv2">decor</h2>
+                        <p class="des">We make all types of wooden decor as per design given by Architect,Interior
+                            designer, contractor which is suitable
+                            your premises.</p>
+                        <a href="#" class="more-btn">
+                            Learn more
+                            <img src="img/right-arrow-w-color.svg" alt="">
+                        </a>
+                    </div>
+                    <div class="products__cate--thumb">
+                        <img src="img/decor_thumb.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="videos --ptb" id="videos">
+            <div class="container">
+                <div class="textbox --align-center">
+                    <h2 class="heading --lv2">wooder – is quality</h2>
+                    <div class="des">Wooder utilizes materials otherwise left behind, rendered useless in their original
+                        intent. By creating new pieces made
+                        rerclaimed barnwood rendered useless in their original intent.</div>
+                </div>
+                <div class="videos__thumb">
+                    <div class="videos__thumb--detail">
+                        <div class="detail__img">
+                            <img src="img/video-play-btn.svg" alt="" class="detail__img--icon">
+                            <img src="img/video-1.jpg" alt="" class="detail__img--bg">
+                        </div>
+                        <span class="title">Innovative Design</span>
+                    </div>
+                    <div class="videos__thumb--detail">
+                        <div class="detail__img">
+                            <img src="img/video-play-btn.svg" alt="" class="detail__img--icon">
+                            <img src="img/video-2.jpg" alt="" class="detail__img--bg">
+                        </div>
+                        <span class="title">High-level Skills</span>
+                    </div>
+                    <div class="videos__thumb--detail">
+                        <div class="detail__img">
+                            <img src="img/video-play-btn.svg" alt="" class="detail__img--icon">
+                            <img src="img/video-3.jpg" alt="" class="detail__img--bg">
+                        </div>
+                        <span class="title">Quality Products</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="banner" style="background: url('./img/bg-video.jpg');
+        background-repeat: no-repeat; background-size: auto;background-attachment: fixed;">
+            <div class="container">
+                <div class="textbox">
+                    <h2 class="heading --lv2 --yellow">we Do the design <br>of any complexity</h2>
+                    <p class="des --white">
+                        Wooder utilizes materials otherwise left behind, rendered useless in their original intent. By
+                        creating new pieces made
+                        o.rerclaimed barnwood
+                    </p>
+                    <button class="btnvideo" onclick="openVideo()">
+                        <img src="img/btnplay.svg" alt="">
+                        wATCH video
+                    </button>
+                </div>
+            </div>
+        </section>
+        <section class="about --ptb" id="about">
+            <div class="container">
+                <div class="about__thumb">
+                    <img src="img/about_us-thumb.jpg" alt="">
+                </div>
+                <div class="textbox --align-left">
+                    <h2 class="heading --lv2">about us</h2>
+                    <p class="des">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore magna
+                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                        ex ea commodo consequat.</p>
+                    <a href="#" class="more-btn">
+                        <span>Learn more</span>
+                        <img src="img/right-arrow-w-color.svg" alt="">
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="gallery --ptb" id="gallery">
+            <div class="container">
+                <div class="textbox">
+                    <h2 class="heading --lv2 --white">
+                        gallery
+                    </h2>
+                    <p class="des --white">
+                        We are a team of professionals in the wood processing and
+                        the creation of wooden furniture of the highest class
+                    </p>
+                </div>
+                <div class="gallery__list">
+                    <figure class="gallery__list--item">
+                        <a href="#"><img src="img/gallery-thumb1-small.jpg" alt=""></a>
+                    </figure>
+                    <figure class="gallery__list--item">
+                        <a href="#"><img src="img/gallery-thumb2-small.jpg" alt=""></a>
+                    </figure>
+                    <figure class="gallery__list--item">
+                        <a href="#"><img src="img/gallery-thumb3-small.jpg" alt=""></a>
+                    </figure>
+                    <figure class="gallery__list--item">
+                        <a href="#"><img src="img/gallery-thumb4-small.jpg" alt=""></a>
+                    </figure>
+                    <figure class="gallery__list--item">
+                        <a href="#"><img src="img/gallery-thumb5-small.jpg" alt=""></a>
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <section class="news --ptb" id="news">
+            <div class="container">
+                <div class="textbox">
+                    <h2 class="heading --lv2">
+                        news
+                    </h2>
+                    <p class="des">We are a team of professionals in the wood processing and the creation of wooden
+                        furniture of the highest class</p>
+                </div>
+                <ul class="news__tabs">
+                    <li class="news__tabs--item active">All</li>
+                    <li class="news__tabs--item">technology</li>
+                    <li class="news__tabs--item">fashion</li>
+                </ul>
+                <div class="news__list">
+                    <article class="news__list--item">
+                        <a href="#" class="item__img">
+                            <img src="img/news-thumb1.jpg" alt="">
+                        </a>
+                        <div class="item__info">
+                            <h3 class="heading --lv3">
+                                <a href="#">Where does it come from?</a>
+                            </h3>
+                            <p class="item__info--des">
+                                Contrary to popular belief, Lorem Ipsum
+                                is not simply random text. It has roots
+                                in a piece of classical Latin literatur roots
+                                in a piece of
+                            </p>
+                        </div>
+                    </article>
+                    <article class="news__list--item">
+                        <a href="#" class="item__img">
+                            <img src="img/news-thumb2.jpg" alt="">
+                        </a>
+                        <div class="item__info">
+                            <h3 class="heading --lv3">
+                                <a href="#">There are many
+                                    variations of passages</a>
+                            </h3>
+                            <p class="item__info--des">
+                                Contrary to popular belief, Lorem Ipsum
+                                is not simply random text. It has roots
+                                in a piece of classical Latin literatur Lorem Ipsum
+                                is not
+                            </p>
+                        </div>
+                    </article>
+                    <article class="news__list--item">
+                        <a href="#" class="item__img">
+                            <img src="img/news-thumb3.jpg" alt="">
+                        </a>
+                        <div class="item__info">
+                            <h3 class="heading --lv3">
+                                <a href="#">It is a long established
+                                    fact that a reader It has roots
+                                    in a piece of It is a long established
+                                    fact that a reader It has roots
+                                    in a piece of</a>
+                            </h3>
+                            <p class="item__info--des">
+                                Contrary to popular belief, Lorem Ipsum
+                                is not simply random text. It has roots
+                                in a piece of classical Latin literatur Lorem Ipsum
+                                is not
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="carousel --pb">
+            <div class="carousel__img">
+                <img src="img/slider-detail1.jpg" alt="" class="slider__img--detail">
+                <img src="img/slider-detail2.jpg" alt="" class="slider__img--detail">
+                <img src="img/slider-detail3.jpg" alt="" class="slider__img--detail">
+                <img src="img/slider-detail4.png" alt="" class="slider__img--detail">
+            </div>
+            <div class="container">
+                <div class="carousel__progress">
+                    <span></span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <p class="footer__copyright">
+                &copy; 2023 WOODER, CFD Circle
+            </p>
+            <a href="./" class="footer__logo">
+                <img src="img/logo-wooder.svg" alt="">
+            </a>
+            <button class="footer__backtotopbtn">
+                <img src="img/bttbtn.svg" alt="">
+            </button>
+        </div>
+    </footer>
+    <div class="signup ">
+        <div class="container">
+            <form action="#" class="signup__form">
+                <div class="signup__form--closebtn">
+                    <img src="img/icon-close.svg" alt="">
+                </div>
+                <div class="signup__form--top">
+                    <h2 class="heading --lv2">create account</h2>
+                    <div class="social">
+                        <a href="https://accounts.google.com/v3/signin/identifier?authuser=0&continue=https%3A%2F%2Fmail.google.com%2Fmail&ec=GAlAFw&hl=vi&service=mail&flowName=GlifWebSignIn&flowEntry=AddSession&dsh=S-536620582%3A1703916782338227&theme=glif"
+                            target="_blank" class="social__item">
+                            <img src="img/logo-gg.svg" alt="">
+                            <span>google</span>
+                        </a>
+                        <a href="https://www.facebook.com/cfdcircle" target="_blank" class="social__item">
+                            <img src="img/logo-fb.svg" alt="">
+                            <span>facebook</span>
+                        </a>
+                    </div>
+                    <p class="optional">Or register using</p>
+                </div>
+                <div class="signup__form--bottom">
+                    <div class="form__group">
+                        <input type="text" placeholder="Fullname">
+                    </div>
+                    <div class="form__group">
+                        <input type="text" placeholder="Email address">
+                    </div>
+                    <div class="form__group">
+                        <input type="text" placeholder="Username">
+                    </div>
+                    <div class="form__group --pw">
+                        <label for="pw">
+                            <input type="password" placeholder="Password" id="pw" name="pw">
+                            <button class="toggle-password">
+                                <img src="img/visible-pw.svg" alt="" class="visible">
+                                <img src="img/unvisible-pw.svg" alt="" class="hidden --hide">
+                            </button>
+                        </label>
+                    </div>
+                    <div class="form__group --pw">
+                        <label for="pw">
+                            <input type="password" placeholder="Confirm Password" id="cpw" name="cpw">
+                            <button class="toggle-password">
+                                <img src="img/visible-pw.svg" alt="" class="visible">
+                                <img src="img/unvisible-pw.svg" alt="" class="hidden --hide">
+                            </button>
+                        </label>
+                    </div>
+                    <div class="form__checkbox">
+                        <label for="noti">
+                            <input type="checkbox" id="noti" placeholder="Username">
+                            <span class="checkmark"></span>
+                            Send me special offers, information and recommendations
+                        </label>
+                    </div>
+                    <input type="submit" value="SIGN UP" class="signup__btn">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="popup-video">
+        <div class="video__frame">
+            <div class="video__frame--closebtn">
+                <img src="img/icon-close.svg" alt="">
+            </div>
+            <img src="img/popup-video.jpg" alt="" class="video__frame--img">
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

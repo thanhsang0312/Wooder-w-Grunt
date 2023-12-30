@@ -1,0 +1,195 @@
+.loading {
+    display: none;
+}
+
+.btnmain {
+    @include formatText(pb, var(--fz-btn), normal, var(--ls-btn), var(--white-cl));
+    text-transform: uppercase;
+    height: 48px;
+    padding: 0 28px;
+    border: 1px solid var(--white-cl);
+    @include flexCenter;
+    position: relative;
+    gap: 12px;
+
+    &::before {
+        content: '';
+        height: 100%;
+        width: 0;
+        background-color: var(--prim-cl);
+        position: absolute;
+        top: 0;
+        left: auto;
+        right: 0;
+        z-index: -1;
+        transition: 0.3s;
+    }
+
+    &:hover::before {
+        width: 100%;
+        left: 0;
+        right: auto;
+    }
+}
+
+
+.heading {
+    &.--lv1 {
+        @include formatText(pb, var(--fz-lv1), normal, var(--ls-h1), var(--prim-cl));
+        text-transform: uppercase;
+    }
+
+    &.--lv2 {
+        @include formatText(pb, var(--fz-lv2), normal, var(--ls-h2));
+        text-transform: uppercase;
+    }
+
+    &.--lv3 {
+        @include formatText(pb, var(--fz-lv3), var(--lh-h3), var(--ls-h3));
+        text-transform: uppercase;
+        @include overText(2);
+    }
+}
+
+.textbox {
+    .heading {
+        margin-bottom: 10px;
+
+        &.--lv2 {
+            @include formatText(pb, var(--fz-lv2), normal, var(--ls-h2));
+            text-transform: uppercase;
+        }
+
+        &.--yellow {
+            color: var(--prim-cl);
+        }
+
+        &.--white {
+            color: var(--white-cl);
+        }
+    }
+
+    .more-btn {
+        width: fit-content;
+        display: flex;
+        gap: 8px;
+        @include formatText(pb, var(--fz-btn), normal, var(--ls-btn));
+        text-transform: uppercase;
+        position: relative;
+        margin-top: 26px;
+
+        &::after {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background-color: var(--prim-cl);
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+        }
+
+        img {
+            @include durationTime(var(--btn-dt));
+        }
+
+        &:hover img {
+            transform: translateX(12px);
+        }
+    }
+
+    .btnvideo {
+        @include formatText(pb, var(--fz-btn), normal, var(--ls-btn), var(--white-cl));
+        text-transform: uppercase;
+        @include flexCenter;
+        gap: 10px;
+        padding: 0 34px;
+        height: 44px;
+        border: 1px solid var(--white-cl);
+        margin-top: 48px;
+        @include durationTime(var(--btn-dt));
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--prim-cl);
+        }
+    }
+
+    &.--align-left {
+        padding-left: 72px;
+
+        position: relative;
+
+        .heading {
+            margin-bottom: 10px;
+
+        }
+
+        &::before {
+            content: '';
+            width: 58px;
+            height: 5px;
+            background-color: var(--prim-cl);
+            position: absolute;
+            top: 24px;
+            left: 0;
+        }
+    }
+
+    &.--align-right {
+        position: relative;
+        text-align: right;
+        padding-right: 72px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        position: relative;
+
+        .heading {
+            margin-bottom: 8px;
+
+        }
+
+        &::after {
+            content: '';
+            width: 58px;
+            height: 5px;
+            background-color: var(--prim-cl);
+            position: absolute;
+            top: 24px;
+            right: 0;
+        }
+
+    }
+
+    &.--align-center {
+        position: relative;
+        text-align: center;
+
+        .heading {
+            margin-bottom: 33px;
+        }
+
+        .des {
+            max-width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &::before {
+            content: '';
+            width: 58px;
+            height: 5px;
+            background-color: var(--prim-cl);
+            position: absolute;
+            top: 62px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+.des {
+    &.--white {
+        color: var(--white-cl);
+    }
+}

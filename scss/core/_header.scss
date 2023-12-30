@@ -1,0 +1,120 @@
+.header {
+    background: var(--bg-header);
+    height: var(--header-height);
+    width: 100%;
+    position: fixed;
+    z-index: 4;
+    @include durationTime(var(--btn-dt));
+
+    &.--black {
+        background-color: var(--black-cl);
+    }
+
+    .container-fluid {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        position: relative;
+
+        .header__logo {
+            @include flexCenter;
+            height: 100%;
+        }
+
+        .header__nav {
+            @include flexCenter;
+            text-transform: uppercase;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+
+            li {
+
+                a {
+                    display: flex;
+                    flex-direction: column;
+                    @include formatText(pb, var(--fz-btn), normal, var(--ls-btn), var(--white-cl));
+                    padding: 5px 20px;
+                    cursor: pointer;
+
+                    &.active {
+                        color: var(--prim-cl);
+
+                        &::after {
+                            content: '';
+                            display: block;
+                            width: -moz-fit-content;
+                            height: 2px;
+                            background-color: var(--prim-cl);
+                        }
+                    }
+                }
+            }
+
+        }
+
+        .header__cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .header__cta--lang {
+                @include flexCenter;
+                padding: 0 18px;
+                height: 38px;
+                @include formatText(pb, var(--fz-btn), normal, var(--ls-btn), var(--white-cl));
+                position: relative;
+                cursor: pointer;
+
+                .curr {
+                    @include flexCenter;
+                }
+
+                svg {
+                    margin-left: 2px;
+                }
+
+                .dropdown {
+                    position: absolute;
+                    left: 50%;
+                    transform: translate(-50%);
+                    bottom: -90px;
+                    background-color: var(--black-cl);
+                    display: none;
+                    flex-direction: column;
+
+                    li {
+                        padding: 7px 20px;
+                        @include durationTime(var(--btn-dt));
+
+                        &:hover {
+                            color: var(--prim-cl);
+                        }
+                    }
+                }
+
+                &:hover .dropdown {
+                    @include flexCenter;
+                }
+            }
+
+            .header__cta--signup {
+                background-color: var(--prim-cl);
+                border: 1px solid var(--prim-cl);
+                transition: var(--btn-dt);
+                -webkit-transition: var(--btn-dt);
+                @include flexCenter;
+                padding: 0 18px;
+                height: 38px;
+                @include formatText(pb, var(--fz-btn), normal, var(--ls-btn), var(--white-cl));
+                cursor: pointer;
+
+                &:hover {
+                    background-color: transparent;
+                    border: 1px solid var(--white-cl);
+                }
+            }
+        }
+    }
+}
