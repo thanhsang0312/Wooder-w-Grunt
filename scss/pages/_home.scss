@@ -40,6 +40,7 @@
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
+                position: relative;
 
                 .hero__bottom--paging {
                     @include flexCenter(flex, center, center);
@@ -78,10 +79,19 @@
                     @include flexCenter;
                     flex-direction: column;
                     gap: 9px;
+                    position: absolute;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
 
                     .arrowdown {
                         animation: myMove 0.8s infinite alternate;
                         position: relative;
+                    }
+
+                    @include xs {
+                        .mouse {
+                            display: none;
+                        }
                     }
 
                     @keyframes myMove {
@@ -123,7 +133,6 @@
 
     .products {
         .container {
-
             .products__cate {
                 display: grid;
                 grid-template-columns: repeat(12, 1fr);
@@ -162,6 +171,13 @@
                     grid-row: 1/2;
                 }
             }
+
+            @include xs {
+                .products__cate {
+                    display: flex;
+                    flex-direction: column-reverse;
+                }
+            }
         }
 
     }
@@ -197,6 +213,10 @@
                         @include images;
                         @include durationTime(var(--btn-dt));
                     }
+
+                    &:hover .detail__img--bg {
+                        transform: scale(1.1);
+                    }
                 }
 
                 .title {
@@ -216,10 +236,13 @@
                         transform: translate(-50%);
                     }
                 }
+            }
+        }
 
-                &:hover .detail__img--bg {
-                    transform: scale(1.1);
-                }
+        @include xs {
+            .videos__thumb {
+                @include flexCenter;
+                flex-direction: column;
             }
         }
     }
@@ -274,14 +297,25 @@
                 grid-column: 8/13;
             }
         }
+
+        @include xs {
+            .container {
+                display: flex;
+                flex-direction: column;
+            }
+        }
     }
 
     .gallery {
         background-color: var(--black-cl);
 
         .textbox {
-            .des {
-                max-width: calc(100%/3);
+            max-width: calc(100%/3);
+        }
+
+        @include xs {
+            .textbox {
+                max-width: 100%;
             }
         }
 
@@ -332,10 +366,7 @@
 
     .news {
         .textbox {
-            .des {
-                display: grid;
-                max-width: calc(100%/3);
-            }
+            max-width: calc(100%/3);
         }
 
         .news__tabs {

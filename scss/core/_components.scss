@@ -116,7 +116,6 @@
 
     &.--align-left {
         padding-left: 72px;
-
         position: relative;
 
         .heading {
@@ -132,6 +131,16 @@
             position: absolute;
             top: 24px;
             left: 0;
+        }
+    }
+
+    @include xs {
+        &.--align-left {
+            padding-left: 0;
+
+            &::before {
+                display: none;
+            }
         }
     }
 
@@ -161,6 +170,16 @@
 
     }
 
+    @include xs {
+        &.--align-right {
+            padding-right: 0;
+
+            &::after {
+                display: none;
+            }
+        }
+    }
+
     &.--align-center {
         position: relative;
         text-align: center;
@@ -171,8 +190,7 @@
 
         .des {
             max-width: 50%;
-            margin-left: auto;
-            margin-right: auto;
+            display: inline-block;
         }
 
         &::before {
