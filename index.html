@@ -61,7 +61,7 @@
                         <li>AU</li>
                     </ul>
                 </div>
-                <div class="header__cta--signup --btn-yellow" onclick="openSignUp()">SIGN UP</div>
+                <div class="header__cta--signup --btn-yellow" onclick="toggleSignup()">SIGN UP</div>
                 <div class="header__cta--hamburger">
                     <span></span>
                 </div>
@@ -377,9 +377,9 @@
             </button>
         </div>
     </footer>
-    <div class="signup ">
-        <div class="container">
-            <form action="#" class="signup__form">
+    <div class="signup">
+        <div class="outside" onclick="selectOutside()">
+            <form action="#" class="signup__form" onclick="stopPropagation(event)">
                 <div class="signup__form--closebtn">
                     <img src="img/icon-close.svg" alt="">
                 </div>
@@ -411,19 +411,19 @@
                     <div class="form__group --pw">
                         <label for="pw">
                             <input type="password" placeholder="Password" id="pw" name="pw">
-                            <button class="toggle-password">
+                            <div class="toggle-password">
                                 <img src="img/visible-pw.svg" alt="" class="visible">
                                 <img src="img/unvisible-pw.svg" alt="" class="hidden --hide">
-                            </button>
+                            </div>
                         </label>
                     </div>
                     <div class="form__group --pw">
                         <label for="pw">
                             <input type="password" placeholder="Confirm Password" id="cpw" name="cpw">
-                            <button class="toggle-password">
+                            <div class="toggle-password">
                                 <img src="img/visible-pw.svg" alt="" class="visible">
                                 <img src="img/unvisible-pw.svg" alt="" class="hidden --hide">
-                            </button>
+                            </div>
                         </label>
                     </div>
                     <div class="form__checkbox">
@@ -439,11 +439,13 @@
         </div>
     </div>
     <div class="popup-video">
-        <div class="video__frame">
-            <div class="video__frame--closebtn">
-                <img src="img/icon-close.svg" alt="">
+        <div class="outside" onclick="selectOutsideVid()">
+            <div class="video__frame" onclick="stopPropagation(event)">
+                <div class="video__frame--closebtn">
+                    <img src="img/icon-close.svg" alt="">
+                </div>
+                <img src="img/popup-video.jpg" alt="" class="video__frame--img">
             </div>
-            <img src="img/popup-video.jpg" alt="" class="video__frame--img">
         </div>
     </div>
     <script src="js/main.js"></script>

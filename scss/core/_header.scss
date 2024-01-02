@@ -3,7 +3,7 @@
     height: var(--header-height);
     width: 100%;
     position: fixed;
-    z-index: 4;
+    z-index: 10;
     @include durationTime(var(--btn-dt));
 
     &.--black {
@@ -20,6 +20,10 @@
         .header__logo {
             @include flexCenter;
             height: 100%;
+
+            &.hide {
+                display: none;
+            }
         }
 
         .header__nav {
@@ -54,6 +58,12 @@
 
         }
 
+        @include xs {
+            .header__nav {
+                display: none;
+            }
+        }
+
         .header__cta {
             display: flex;
             align-items: center;
@@ -66,6 +76,10 @@
                 @include formatText(pb, var(--fz-btn), normal, var(--ls-btn), var(--white-cl));
                 position: relative;
                 cursor: pointer;
+
+                &.hide {
+                    display: none;
+                }
 
                 .curr {
                     @include flexCenter;
@@ -116,5 +130,79 @@
                 }
             }
         }
+
+        @include xs {
+            .header__cta {
+                .header__cta--signup {
+                    display: none;
+                }
+
+                .header__cta--hamburger {
+                    display: block;
+                    padding: 7px 0;
+
+                    span {
+                        position: relative;
+                        display: block;
+                        width: 24px;
+                        height: 3px;
+                        background-color: var(--white-cl);
+
+                        &::before {
+                            content: '';
+                            width: 24px;
+                            height: 3px;
+                            background-color: var(--white-cl);
+                            position: absolute;
+                            top: -6px;
+                        }
+
+                        &::after {
+                            content: '';
+                            width: 24px;
+                            height: 3px;
+                            background-color: var(--white-cl);
+                            position: absolute;
+                            bottom: -6px;
+                        }
+                    }
+
+                    &.--close {
+
+                        span {
+                            width: 0;
+                            height: 0;
+
+                            &::before {
+                                content: '';
+                                width: 24px;
+                                height: 3px;
+                                background-color: var(--white-cl);
+                                position: fixed;
+                                top: 40px;
+                                right: 10px;
+                                z-index: 10;
+                                transform: rotate(45deg);
+                            }
+
+                            &::after {
+                                content: '';
+                                width: 24px;
+                                height: 3px;
+                                background-color: var(--white-cl);
+                                position: fixed;
+                                top: 40px;
+                                right: 10px;
+                                z-index: 9;
+                                transform: rotate(-45deg);
+                            }
+                        }
+                    }
+                }
+
+            }
+
+        }
     }
+
 }

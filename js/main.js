@@ -1,3 +1,5 @@
+// const { event } = require("grunt");
+
 // Scroll to top button
 window.onscroll = function () {
     scrollToTop();
@@ -46,25 +48,37 @@ function scrollToVideos() {
 }
 // Click to open sign-up
 
-function openSignUp() {
-    const signupElement = document.querySelector('.header__cta--signup');
-    const popupForm = document.querySelector('.signup');
-    const closeElemtn = document.querySelector('.signup__form--closebtn');
-    popupForm.classList.add('--show');
-    closeElemtn.addEventListener('click', function () {
-        popupForm.classList.remove('--show');
+function toggleSignup() {
+    const signupElement = document.querySelector('.signup');
+    const closeBtn = document.querySelector('.signup__form--closebtn');
+    signupElement.classList.toggle('--show');
+    closeBtn.addEventListener('click', function () {
+        signupElement.classList.remove('--show');
     })
 }
+
+// Close Sign-up Form
+
+function stopPropagation(event) {
+    event.stopPropagation();
+}
+function selectOutside() {
+    document.querySelector('.signup').classList.remove('--show');
+}
+
 // Click to open video popup
 
 function openVideo() {
-    const videoElement = document.querySelector('.btnvideo');
     const popupVideo = document.querySelector('.popup-video');
     const closeElemtn = document.querySelector('.video__frame--closebtn');
-    popupVideo.classList.add('--show');
+    popupVideo.classList.toggle('--show');
     closeElemtn.addEventListener('click', function () {
         popupVideo.classList.remove('--show');
     })
+}
+
+function selectOutsideVid() {
+    document.querySelector('.popup-video').classList.remove('--show');
 }
 
 // Toggle password 
@@ -86,3 +100,20 @@ function togglePassword() {
     })
 }
 togglePassword();
+
+// Show menu mobile
+function menuMobile() {
+    const hamburgerElement = document.querySelector('.header__cta--hamburger');
+    const navMobileElement = document.querySelector('.nav-mobile');
+    const logoElement = document.querySelector('.header__logo');
+    const langElement = document.querySelector('.header__cta--lang');
+    hamburgerElement.addEventListener('click', function () {
+        navMobileElement.classList.toggle('--active');
+        logoElement.classList.toggle('hide');
+        langElement.classList.toggle('hide');
+        hamburgerElement.classList.toggle('--close');
+    })
+
+}
+menuMobile();
+
