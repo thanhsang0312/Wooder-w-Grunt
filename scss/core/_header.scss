@@ -4,7 +4,8 @@
     width: 100%;
     position: fixed;
     z-index: 10;
-    @include durationTime(var(--btn-dt));
+    @include durationTime(0.5s);
+    transition-property: background;
 
     &.--black {
         background-color: var(--black-cl);
@@ -16,190 +17,265 @@
         align-items: center;
         height: 100%;
         position: relative;
+    }
 
-        .header__logo {
-            @include flexCenter;
-            height: 100%;
+    &__logo {
+        @include flexCenter;
+        height: 100%;
+        opacity: 1;
+        visibility: visible;
 
-            &.hide {
-                display: none;
-            }
+        &.hide {
+            opacity: 0;
+            visibility: hidden;
         }
+    }
 
-        .header__nav {
-            @include flexCenter;
-            text-transform: uppercase;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+    &__nav {
+        @include flexCenter;
+        text-transform: uppercase;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
 
-            li {
+        li {
+            position: relative;
 
-                a {
-                    display: flex;
-                    flex-direction: column;
-                    @include formatText(pb, var(--fz-btn), normal, var(--ls-btn), var(--white-cl));
-                    padding: 5px 20px;
-                    cursor: pointer;
+            a {
+                display: flex;
+                flex-direction: column;
+                @include formatText(pb, var(--fz-btn), normal, var(--ls-btn), var(--white-cl));
+                padding: 5px 20px;
+                cursor: pointer;
 
-                    &.active {
-                        color: var(--prim-cl);
+                &::after {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    bottom: 0;
+                    height: 2px;
+                    width: calc(100% - 40px);
+                    background-color: var(--prim-cl);
+                    transform: scaleX(0);
+                    transform-origin: right;
+                    @include durationTime(0.5s);
+                    transition-property: transform;
+                }
 
-                        &::after {
-                            content: '';
-                            display: block;
-                            width: -moz-fit-content;
-                            height: 2px;
-                            background-color: var(--prim-cl);
-                        }
+                &.active {
+                    color: var(--prim-cl);
+                    position: relative;
+
+                    &::after {
+                        transform: scaleX(1);
+                        transform-origin: left;
                     }
                 }
             }
 
-        }
 
-        @include xs {
-            .header__nav {
-                display: none;
+
+            @media screen and (max-width: 1010px) {
+                a {
+                    padding: 5px 10px;
+                }
+            }
+
+            &:not(:first-child) {
+                a {
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        bottom: 0;
+                        height: 2px;
+                        width: calc(100% - 40px);
+                        background-color: var(--prim-cl);
+                        transform: scaleX(0);
+                        transform-origin: right;
+                        @include durationTime(0.5s);
+                        transition-property: transform;
+                    }
+
+                    &:hover {
+                        &::after {
+                            transform: scaleX(1);
+                            transform-origin: left;
+                        }
+                    }
+
+                    &.active {
+                        &::after {
+                            transform: scaleX(1);
+                            transform-origin: left;
+                        }
+                    }
+                }
             }
         }
 
-        .header__cta {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+    }
 
-            .header__cta--lang {
-                @include flexCenter;
-                padding: 0 18px;
-                height: 38px;
-                @include formatText(pb, var(--fz-btn), normal, var(--ls-btn), var(--white-cl));
-                position: relative;
-                cursor: pointer;
+    @media screen and (max-width:910px) {
+        &__nav {
+            display: none;
+        }
+    }
 
-                &.hide {
-                    display: none;
-                }
+    &__cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        position: relative;
 
+        &--lang {
+            @include flexCenter;
+            padding: 0 18px;
+            height: 38px;
+            @include formatText(pb, var(--fz-btn), normal, var(--ls-btn), var(--white-cl));
+            cursor: pointer;
+            @include durationTime(var(--btn-dt));
+            opacity: 1;
+            visibility: visible;
+
+            &.hide {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            &.--active {
                 .curr {
-                    @include flexCenter;
-                }
-
-                svg {
-                    margin-left: 2px;
+                    &__icon {
+                        transform: rotateX(180deg);
+                    }
                 }
 
                 .dropdown {
-                    position: absolute;
-                    left: 50%;
-                    transform: translate(-50%);
-                    bottom: -90px;
-                    background-color: var(--black-cl);
-                    display: none;
-                    flex-direction: column;
-
-                    li {
-                        padding: 7px 20px;
-                        @include durationTime(var(--btn-dt));
-
-                        &:hover {
-                            color: var(--prim-cl);
-                        }
-                    }
-                }
-
-                &:hover .dropdown {
-                    @include flexCenter;
+                    opacity: 1;
+                    visibility: visible;
                 }
             }
 
-            .header__cta--signup {
-                background-color: var(--prim-cl);
-                border: 1px solid var(--prim-cl);
-                transition: var(--btn-dt);
-                -webkit-transition: var(--btn-dt);
+            .curr {
                 @include flexCenter;
-                padding: 0 18px;
-                height: 38px;
-                @include formatText(pb, var(--fz-btn), normal, var(--ls-btn), var(--white-cl));
-                cursor: pointer;
 
-                &:hover {
-                    background-color: transparent;
-                    border: 1px solid var(--white-cl);
+                &__icon {
+                    transform: rotateX(0deg);
+                    @include durationTime(var(--btn-dt));
+                }
+            }
+
+            svg {
+                margin-left: 2px;
+            }
+
+            .dropdown {
+                position: absolute;
+                left: 0;
+                top: var(--header-height);
+                background-color: var(--black-cl);
+                @include flexCenter;
+                flex-direction: column;
+                opacity: 0;
+                visibility: hidden;
+                @include durationTime(var(--btn-dt));
+
+                li {
+                    padding: 7px 20px;
+                    @include durationTime(var(--btn-dt));
+
+                    &:hover {
+                        color: var(--prim-cl);
+                    }
                 }
             }
         }
 
-        @include xs {
-            .header__cta {
-                .header__cta--signup {
-                    display: none;
-                }
+        &--signup {
+            background-color: var(--prim-cl);
+            border: 1px solid var(--prim-cl);
+            transition: var(--btn-dt);
+            -webkit-transition: var(--btn-dt);
+            @include flexCenter;
+            padding: 0 18px;
+            height: 38px;
+            @include formatText(pb, var(--fz-btn), normal, var(--ls-btn), var(--white-cl));
+            cursor: pointer;
 
-                .header__cta--hamburger {
+            &:hover {
+                background-color: transparent;
+                border: 1px solid var(--white-cl);
+            }
+        }
+
+        &--hamburger {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 910px) {
+        &__cta {
+            &--signup {
+                display: none;
+            }
+
+            &--hamburger {
+                @include flexCenter;
+                height: 20px;
+                position: relative;
+
+                span {
+                    position: relative;
                     display: block;
-                    padding: 7px 0;
-
-                    span {
-                        position: relative;
-                        display: block;
-                        width: 24px;
-                        height: 3px;
-                        background-color: var(--white-cl);
-
-                        &::before {
-                            content: '';
-                            width: 24px;
-                            height: 3px;
-                            background-color: var(--white-cl);
-                            position: absolute;
-                            top: -6px;
-                        }
-
-                        &::after {
-                            content: '';
-                            width: 24px;
-                            height: 3px;
-                            background-color: var(--white-cl);
-                            position: absolute;
-                            bottom: -6px;
-                        }
-                    }
-
-                    &.--close {
-
-                        span {
-                            width: 0;
-                            height: 0;
-
-                            &::before {
-                                content: '';
-                                width: 24px;
-                                height: 3px;
-                                background-color: var(--white-cl);
-                                position: fixed;
-                                top: 40px;
-                                right: 10px;
-                                z-index: 10;
-                                transform: rotate(45deg);
-                            }
-
-                            &::after {
-                                content: '';
-                                width: 24px;
-                                height: 3px;
-                                background-color: var(--white-cl);
-                                position: fixed;
-                                top: 40px;
-                                right: 10px;
-                                z-index: 9;
-                                transform: rotate(-45deg);
-                            }
-                        }
-                    }
+                    width: 24px;
+                    height: 3px;
+                    background-color: var(--white-cl);
+                    opacity: 1;
+                    transition: 0.3s;
                 }
 
+                &::before {
+                    content: '';
+                    width: 24px;
+                    height: 3px;
+                    background-color: var(--white-cl);
+                    position: absolute;
+                    top: 0;
+                    transform: rotate(0);
+                    transition: 0.3s;
+                }
+
+                &::after {
+                    content: '';
+                    width: 24px;
+                    height: 3px;
+                    background-color: var(--white-cl);
+                    position: absolute;
+                    bottom: 0;
+                    transition: 0.3s;
+                }
+
+                &.--active {
+                    span {
+                        opacity: 0;
+                        pointer-events: none;
+                    }
+
+                    &::before {
+                        top: 9px;
+                        background-color: var(--prim-cl);
+                        transform: rotate(45deg);
+                    }
+
+                    &::after {
+                        bottom: 9px;
+                        background-color: var(--prim-cl);
+                        transform: rotate(-45deg);
+                    }
+                }
             }
 
         }

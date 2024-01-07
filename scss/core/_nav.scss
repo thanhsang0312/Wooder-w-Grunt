@@ -2,11 +2,12 @@
     display: none;
 }
 
-@include xs {
+@media screen and (max-width: 910px) {
     .nav-mobile {
         @include flexCenter;
         background-color: var(--black-cl);
-        height: 100vh;
+        margin-top: var(--header-height);
+        height: calc(100vh - var(--header-height));
         position: fixed;
         z-index: 9;
         top: 0;
@@ -16,14 +17,16 @@
         transition: 0.2s;
         visibility: hidden;
         opacity: 0;
+        overflow: hidden;
 
         &.--active {
             opacity: 1;
             visibility: visible;
         }
 
-        .header__nav {
+        .nav-mobile-menu {
             text-align: center;
+            transform: translateY(-90px);
 
             li {
                 padding-top: 7px;

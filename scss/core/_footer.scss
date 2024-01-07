@@ -10,43 +10,64 @@
         align-items: center;
         height: 100%;
         position: relative;
+    }
 
-        .footer__copyright {
-            @include formatText(pr, var(--fz-text-sm), normal, var(--ls-text-sm), var(--white-cl));
-            opacity: 0.5;
+    &__copyright {
+        @include formatText(pr, var(--fz-text-sm), normal, var(--ls-text-sm), var(--white-cl));
+        opacity: 0.5;
+    }
+
+    &__logo {
+        @include flexCenter;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &__backtotopbtn {
+        background-color: var(--grey-cl);
+        border: 1px solid var(--white-cl);
+        height: 33px;
+        padding: 0 11px;
+        @include flexCenter;
+        position: fixed;
+        z-index: 10;
+        bottom: 32px;
+        right: clamp(var(--gap), calc((100vw - var(--max-w-container) + 36px)/2), calc((100vw - var(--max-w-container) + 36px)/2));
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        @include durationTime(0.3s);
+
+        &.show {
+            opacity: 1;
+            visibility: visible;
         }
 
-        .footer__logo {
-            @include flexCenter;
-            height: 100%;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+        &:hover {
+            background-color: var(--prim-cl);
+        }
+    }
+}
+
+@include xxs {
+    .footer {
+        height: var(--footer-height);
+
+        .container {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: space-evenly;
+            align-items: center;
         }
 
-        .footer__backtotopbtn {
-            background-color: var(--grey-cl);
-            border: 1px solid var(--white-cl);
-            height: 33px;
-            padding: 0 10px;
+        &__logo {
             @include flexCenter;
-            position: fixed;
-            z-index: 10;
-            bottom: 32px;
-            right: calc((100vw - var(--max-w-container) + 36px)/2); // 40px
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            @include durationTime(0.3s);
-
-            &.show {
-                opacity: 1;
-                visibility: visible;
-            }
-
-            &:hover {
-                background-color: var(--prim-cl);
-            }
+            height: initial;
+            position: initial;
+            left: initial;
+            transform: initial;
         }
     }
 }

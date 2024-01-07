@@ -21,6 +21,9 @@
 @mixin durationTime($time) {
     transition: $time;
     -webkit-transition: $time;
+    -moz-transition: $time;
+    -ms-transition: $time;
+    -o-transition: $time;
 }
 
 @mixin formatText($ff, $fz, $lh, $ls, $cl : var(--black-cl)) {
@@ -70,6 +73,13 @@
 // Phone lớn, screen < 576px 
 @mixin xxs {
     @media screen and (max-width: 575.98px) {
+        @content;
+    }
+}
+
+// Phones nhỏ, screen < 376px - tuỳ yêu cầu
+@mixin xxxs {
+    @media screen and (max-width: 375.98px) {
         @content;
     }
 }

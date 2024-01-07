@@ -8,7 +8,7 @@
     // Width
     --max-w-page: 2560px;
     --max-w-cfluid: 1920px;
-    --max-w-container: 1252px; //1252px
+    --max-w-container: calc(1196px + var(--gap)*2); //1252px
     // Height
     --header-height: 90px;
     --footer-height: 100px;
@@ -63,9 +63,12 @@
         --lh-text: 2rem;
         --lh-h2: 4.2rem;
         --lh-h3: 2.2rem;
+
+        --ls-h2: 1.52px;
     }
 
     @include xxs {
         --max-w-container: 100%;
+        --footer-height: 92px;
     }
 }

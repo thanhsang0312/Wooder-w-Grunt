@@ -8,6 +8,11 @@ html {
         margin: auto;
         @include formatText(pr, var(--fz-text), var(--lh-text), var(--ls-text), var(--black-cl));
 
+        &.--disable-scroll {
+            height: 100vh;
+            overflow: hidden;
+        }
+
         .container-fluid {
             @include generalContainer(100%, var(--max-w-cfluid), var(--gap), var(--gap));
             position: relative;
