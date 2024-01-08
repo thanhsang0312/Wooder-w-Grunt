@@ -142,12 +142,13 @@ dropdownShow();
 function scrollTracker() {
     const scrollTracker = document.querySelector('.scrolltracker__bar--progress');
     const windowHeight = document.querySelector('.homepage').scrollHeight;
-    const heroElement = document.querySelector('.hero');
+    // const heroElement = document.querySelector('.hero');
+    // const navElement = document.querySelectorAll('.header__nav li a');
     window.onscroll = function () {
         let coordY = window.scrollY;
         let percent = 100 * coordY / (windowHeight - window.innerHeight);
         scrollTracker.style.width = `${percent}%`;
-        if (coordY > heroElement.clientHeight) {
+        if (coordY > document.querySelector('.hero__bottom').offsetTop) {
             document.querySelector('.footer__backtotopbtn').classList.add('show');
             document.querySelector('.header').classList.add('--black');
         } else {
@@ -174,5 +175,74 @@ scrollToTop();
 
 function scrollToSection() {
     const navElement = document.querySelectorAll('.header__nav li a');
+    navElement.forEach((param) => {
+        param.addEventListener('click', function () {
+            if (param.textContent === "home") {
+                document.querySelector('.homepage').scrollIntoView();
+                navElement.forEach((el) => {
+                    el.classList.remove('active');
+                })
+                this.classList.add('active');
+            }
+            if (param.textContent === "products") {
+                document.querySelector('#products').scrollIntoView();
+                navElement.forEach((el) => {
+                    el.classList.remove('active');
+                })
+                this.classList.add('active');
+            }
+            if (param.textContent === "videos") {
+                document.querySelector('#videos').scrollIntoView();
+                navElement.forEach((el) => {
+                    el.classList.remove('active');
+                })
+                this.classList.add('active');
+            }
+            if (param.textContent === "about") {
+                document.querySelector('#about').scrollIntoView();
+                navElement.forEach((el) => {
+                    el.classList.remove('active');
+                })
+                this.classList.add('active');
+            }
+            if (param.textContent === "gallery") {
+                document.querySelector('#gallery').scrollIntoView();
+                navElement.forEach((el) => {
+                    el.classList.remove('active');
+                })
+                this.classList.add('active');
+            }
+            if (param.textContent === "news") {
+                document.querySelector('#news').scrollIntoView();
+                navElement.forEach((el) => {
+                    el.classList.remove('active');
+                })
+                this.classList.add('active');
+            }
+        })
+    })
 }
 scrollToSection();
+
+// News Tab
+function newsTab() {
+    const tabElement = document.querySelectorAll('.news__tabs--item');
+    const newsListElement = document.querySelectorAll('.news__list--wrap');
+    tabElement.forEach((param) => {
+        param.addEventListener('click', function () {
+            tabElement.forEach((el) => {
+                el.classList.remove('active');
+            })
+            this.classList.add('active');
+
+            newsListElement.forEach(param => {
+                param.classList.remove('active');
+            })
+
+            let key = param.getAttribute("data-tab");
+
+            document.querySelector(`.news_tab-${key}`).classList.add('active');
+        })
+    })
+}
+newsTab();
