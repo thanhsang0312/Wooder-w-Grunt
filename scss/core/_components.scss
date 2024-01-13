@@ -11,24 +11,28 @@
     @include flexCenter;
     position: relative;
     gap: 12px;
+    @include durationTime(0.3s);
 
-    &::before {
-        content: '';
-        height: 100%;
-        width: 0;
+    // &::before {
+    //     content: '';
+    //     height: 100%;
+    //     width: 0;
+    //     background-color: var(--prim-cl);
+    //     position: absolute;
+    //     top: 0;
+    //     left: auto;
+    //     right: 0;
+    //     z-index: -1;
+    //     transition: 0.3s;
+    // }
+
+    // &:hover::before {
+    //     width: 100%;
+    //     left: 0;
+    //     right: auto;
+    // }
+    &:hover {
         background-color: var(--prim-cl);
-        position: absolute;
-        top: 0;
-        left: auto;
-        right: 0;
-        z-index: -1;
-        transition: 0.3s;
-    }
-
-    &:hover::before {
-        width: 100%;
-        left: 0;
-        right: auto;
     }
 }
 

@@ -22,6 +22,7 @@
     <meta property="og:image" content="" />
 
     <!-- CSS -->
+    <link rel="stylesheet" href="dest/fancybox.css">
     <link rel="stylesheet" href="dest/style.min.css">
     <link rel="stylesheet" href="dest/fonts.css">
     <style>
@@ -74,8 +75,8 @@
     </style>
 </head>
 
-<body class="homepage">
-    <div class="loading --is-loaded">
+<body class="homepage --disable-scroll">
+    <div class="loading">
         <div class="loading__inner">
             <span class="loading__inner--progress">
             </span>
@@ -93,12 +94,13 @@
                 <img src="img/logo-wooder.svg" alt="">
             </a>
             <ul class="header__nav">
-                <li><a href="#" class="active">home</a></li>
-                <li><a>products</a></li>
-                <li><a>videos</a></li>
-                <li><a>about</a></li>
-                <li><a>gallery</a></li>
-                <li><a>news</a></li>
+                <li><a href="#hero" class="active">home</a></li>
+                <li><a href="#products">products</a></li>
+                <li><a href="#videos">videos</a></li>
+                <li><a href="#services">services</a></li>
+                <li><a href="#about">about</a></li>
+                <li><a href="#gallery">gallery</a></li>
+                <li><a href="#news">news</a></li>
             </ul>
             <div class="header__cta">
                 <div class="header__cta--lang">
@@ -121,17 +123,18 @@
     </header>
     <nav class="nav-mobile">
         <ul class="nav-mobile-menu">
-            <li><a href="#" class="active">home</a></li>
-            <li><a onclick="scrollToProducts()">products</a></li>
-            <li><a onclick="scrollToGallery()">videos</a></li>
-            <li><a onclick="scrollToAbout()">about</a></li>
-            <li><a onclick="scrollToGallery()">gallery</a></li>
-            <li><a onclick="scrollToNews()">news</a></li>
+            <li><a href="#hero" class="active">home</a></li>
+            <li><a href="#products">products</a></li>
+            <li><a href="#videos">videos</a></li>
+            <li><a href="#services">services</a></li>
+            <li><a href="#about">about</a></li>
+            <li><a href="#gallery">gallery</a></li>
+            <li><a href="#news">news</a></li>
             <li class="--btn-yellow" onclick="toggleSignup()">Sign up</li>
         </ul>
     </nav>
     <main class="main">
-        <section class="hero">
+        <section class="hero" id="hero">
             <div class="hero__slider">
                 <div class="hero__slider--item">
                     <div class="content">
@@ -142,11 +145,10 @@
                     </div>
                     <picture>
                         <source media="(max-width:768px)" srcset="img/hero-banner-mb.jpg">
-                        <source media="(max-width:992px)" srcset="img/hero-banner-tablet.jpg">
                         <img src="img/hero-banner.jpg" alt="">
                     </picture>
                 </div>
-                <!-- <div class="hero__slider--item">
+                <div class="hero__slider--item">
                     <div class="content">
                         <h2 class="heading --lv1">
                             Furniture
@@ -154,7 +156,7 @@
                         <a href="#" class="btnmain">learn more <img src="img/right-arrow.svg" alt=""></a>
                     </div>
                     <picture>
-                        <source media="(max-width:992px)" srcset="img/hero-banner-tablet.jpg">
+                        <source media="(max-width:768px)" srcset="img/hero-furniture-mb.jpg">
                         <img src="img/hero-furniture.jpg" alt="">
                     </picture>
                 </div>
@@ -166,10 +168,10 @@
                         <a href="#" class="btnmain">learn more <img src="img/right-arrow.svg" alt=""></a>
                     </div>
                     <picture>
-                        <source media="(max-width:992px)" srcset="img/hero-banner-tablet.jpg">
+                        <source media="(max-width:768px)" srcset="img/hero-decor-mb.jpg">
                         <img src="img/hero-decor.jpg" alt="">
                     </picture>
-                </div> -->
+                </div>
             </div>
             <div class="hero__bottom">
                 <div class="container-fluid">
@@ -178,11 +180,6 @@
                             <span class="number__curr">01</span>/
                             <span class="number__total">03</span>
                         </div>
-                        <ol class="dots">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ol>
                     </div>
                     <div class="hero__bottom--mouse">
                         <img src="img/icon-mouse.svg" alt="" class="mouse">
@@ -266,7 +263,8 @@
             </div>
         </section>
         <section class="banner"
-            style="background: url('./img/bg-video.jpg'); background-size: cover;background-attachment: fixed;">
+            style="background: url('./img/bg-video.jpg'); background-size: cover;background-attachment: fixed;"
+            id="services">
             <div class="container">
                 <div class="textbox">
                     <h2 class="heading --lv2 --yellow">we Do the design <br>of any complexity</h2>
@@ -291,8 +289,7 @@
                     <h2 class="heading --lv2">about us</h2>
                     <p class="des">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                         incididunt ut labore et dolore magna
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                        ex ea commodo consequat.</p>
+                        aliqua. </p>
                     <a href="#" class="more-btn">
                         <span>Learn more</span>
                         <img src="img/right-arrow-w-color.svg" alt="">
@@ -313,19 +310,24 @@
                 </div>
                 <div class="gallery__list">
                     <figure class="gallery__list--item">
-                        <a href="img/gallery-thumb1-large.jpg"><img src="img/gallery-thumb1-small.jpg" alt=""></a>
+                        <a href="img/gallery-thumb1-large.jpg" data-fancybox="gallery"><img
+                                src="img/gallery-thumb1-small.jpg" alt=""></a>
                     </figure>
                     <figure class="gallery__list--item">
-                        <a href="img/gallery-thumb2-large.jpg"><img src="img/gallery-thumb2-small.jpg" alt=""></a>
+                        <a href="img/gallery-thumb2-large.jpg" data-fancybox="gallery"><img
+                                src="img/gallery-thumb2-small.jpg" alt=""></a>
                     </figure>
                     <figure class="gallery__list--item">
-                        <a href="img/gallery-thumb3-large.jpg"><img src="img/gallery-thumb3-small.jpg" alt=""></a>
+                        <a href="img/gallery-thumb3-large.jpg" data-fancybox="gallery"><img
+                                src="img/gallery-thumb3-small.jpg" alt=""></a>
                     </figure>
                     <figure class="gallery__list--item">
-                        <a href="img/gallery-thumb4-large.jpg"><img src="img/gallery-thumb4-small.jpg" alt=""></a>
+                        <a href="img/gallery-thumb4-large.jpg" data-fancybox="gallery"><img
+                                src="img/gallery-thumb4-small.jpg" alt=""></a>
                     </figure>
                     <figure class="gallery__list--item">
-                        <a href="img/gallery-thumb5-large.jpg"><img src="img/gallery-thumb5-small.jpg" alt=""></a>
+                        <a href="img/gallery-thumb5-large.jpg" data-fancybox="gallery"><img
+                                src="img/gallery-thumb5-small.jpg" alt=""></a>
                     </figure>
                 </div>
             </div>
@@ -512,14 +514,83 @@
         </section>
         <section class="carousel --pb">
             <div class="carousel__img">
-                <img src="img/slider-detail1.jpg" alt="" class="slider__img--detail">
-                <img src="img/slider-detail2.jpg" alt="" class="slider__img--detail">
-                <img src="img/slider-detail3.jpg" alt="" class="slider__img--detail">
-                <img src="img/slider-detail4.png" alt="" class="slider__img--detail">
+                <img src="img/slider-detail1.jpg" alt="" class="carousel__img--detail">
+                <img src="img/slider-detail2.jpg" alt="" class="carousel__img--detail">
+                <img src="img/slider-detail3.jpg" alt="" class="carousel__img--detail">
+                <img src="img/slider-detail4.png" alt="" class="carousel__img--detail">
+                <img src="img/slider-detail1.jpg" alt="" class="carousel__img--detail">
+                <img src="img/slider-detail2.jpg" alt="" class="carousel__img--detail">
+                <img src="img/slider-detail3.jpg" alt="" class="carousel__img--detail">
+                <img src="img/slider-detail4.png" alt="" class="carousel__img--detail">
             </div>
             <div class="container">
                 <div class="carousel__progress">
                     <span></span>
+                </div>
+            </div>
+        </section>
+        <section class="accordion --pb">
+            <div class="container">
+                <div class="textbox --align-center">
+                    <h2 class="heading --lv2">
+                        FAQs
+                    </h2>
+                </div>
+                <div class="accordion__content">
+                    <button class="accordion__content--title heading --lv3">
+                        CFD Circle có cam kết đầu ra và việc làm 100% không?
+                        <span></span>
+                    </button>
+                    <div class="accordion__content--panel">
+                        <p>CFD Circle không quảng cáo bằng cách cam kết đầu ra 100% để thu hút học viên. Điều chúng tôi
+                            cam kết duy nhất là sẽ đồng hành, hỗ trợ cho bạn hết mình nhằm truyền đạt và giúp cho tất cả
+                            học viên có thể làm được việc cùng các kỹ năng thực tế cần có sau khóa học và ứng tuyển ít
+                            nhất là vị trí fresher tại các công ty.</p>
+                        <p>Ngoài sự cố gắng của giảng viên, học viên cũng phải có sức chiến đấu cao, ý thức học và hoàn
+                            thành các yêu cầu đặt ra nhằm hoàn thành khóa học thật tốt. Khi đó, chắc chắn học viên sẽ
+                            hoàn thành khoá học tốt và ứng tuyển thành công.</p>
+                    </div>
+                    <button class="accordion__content--title heading --lv3">
+                        Học tại CFD Circle xong có đi làm hay thực tập được không?
+                        <span></span>
+                    </button>
+                    <div class="accordion__content--panel">
+                        <p>Khóa học thực chiến tại CFD Circle giúp học viên trải nghiệm dự án, quy trình làm việc và kỹ
+                            năng thực tế cần có để
+                            không chỉ xin thực tập mà còn có thể ứng tuyển các vị trí chính thức cao hơn như ở các công
+                            ty.</p>
+                    </div>
+                    <button class="accordion__content--title heading --lv3">
+                        Học viên hoàn thành khoá học có được cấp chứng chỉ không?
+                        <span></span>
+                    </button>
+                    <div class="accordion__content--panel">
+                        <p>Sau khu học viên hoàn thành khoá học sẽ được cấp chứng chỉ hoàn thành khoá học có chữ ký của
+                            người sáng lập CFD Circle.</p>
+                    </div>
+                    <button class="accordion__content--title heading --lv3">
+                        Sau mỗi buổi học có quay video để xem lại không?
+                        <span></span>
+                    </button>
+                    <div class="accordion__content--panel">
+                        <p>CFD Circle sẽ quay lại video buổi học offline để các bạn không tham gia được có thể xem lại
+                            bằng cách đăng nhập vào
+                            website CFD, chọn mục Khóa Học Của Tôi, chọn Khóa Đang Học và xem lại video.</p>
+                        <p>Bản quyền video thuộc về CFD Circle, nên nếu học viên tìm cách tải video về và chia sẻ thì sẽ
+                            bị khóa tài khoản vĩnh
+                            viễn.</p>
+                    </div>
+                    <button class="accordion__content--title heading --lv3">
+                        Hình thức học ở CFD Circle là gì?
+                        <span></span>
+                    </button>
+                    <div class="accordion__content--panel">
+                        <p>Tại CFD Circle có 2 hình thức học bạn có thể chọn là Offline hoặc Online thông qua Google
+                            Meet cùng với lớp Offline. Tất
+                            cả học viên đều được giảng viên và mentor hỗ trợ, đánh giá, góp ý dự án, review code nhằm
+                            giúp các bạn rút ra nhiều bài
+                            học kinh nghiệm quý giá, cũng như hoàn thành thật tốt khoá học để đi làm.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -617,8 +688,10 @@
             </div>
         </div>
     </div>
-    <script src="js/main.js"></script>
-    <script src="js/libs/imagesloaded.pkgd.min.js"></script>
+
+    <!-- Script -->
+    <script src="dest/jsmain.min.js"></script>
+    <script src="dest/main.js"></script>
 </body>
 
 </html>

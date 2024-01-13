@@ -14,12 +14,22 @@ html {
         }
 
         .container-fluid {
-            @include generalContainer(100%, var(--max-w-cfluid), var(--gap), var(--gap));
+            width: 100%;
+            max-width: var(--max-w-cfluid);
+            padding-right: var(--gap);
+            padding-left: var(--gap);
+            margin-right: auto;
+            margin-left: auto;
             position: relative;
         }
 
         .container {
-            @include generalContainer(100%, var(--max-w-container), var(--gap), var(--gap));
+            width: 100%;
+            max-width: var(--max-w-container);
+            padding-right: var(--gap);
+            padding-left: var(--gap);
+            margin-right: auto;
+            margin-left: auto;
             position: relative;
         }
 

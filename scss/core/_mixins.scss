@@ -34,14 +34,6 @@
     color: $cl;
 }
 
-@mixin generalContainer($w, $mw, $pl, $pr) {
-    width: $w;
-    max-width: $mw;
-    padding-left: $pl;
-    padding-right: $pr;
-    margin: 0 auto;
-}
-
 // Laptop lớn, screen <= 1440px 
 @mixin lg {
     @media screen and (max-width: 1440px) {

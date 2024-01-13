@@ -39,6 +39,11 @@
     --btn-dt: 0.2s;
 
     // Responsive
+
+    @media screen and (max-width: 1000px) {
+        --header-height: 76px;
+    }
+
     @include md {
         --max-w-container: 1140px;
     }

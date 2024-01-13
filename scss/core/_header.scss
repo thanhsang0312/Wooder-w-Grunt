@@ -3,12 +3,15 @@
     height: var(--header-height);
     width: 100%;
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 10;
-    @include durationTime(0.5s);
-    transition-property: background;
+    @include durationTime(0.2s);
+    transition-property: background height;
 
     &.--black {
         background-color: var(--black-cl);
+        height: 76px;
     }
 
     .container-fluid {
@@ -71,13 +74,24 @@
                         transform-origin: left;
                     }
                 }
+
+                &:hover {
+                    &::after {
+                        transform: scaleX(1);
+                        transform-origin: left;
+                    }
+                }
             }
 
 
 
-            @media screen and (max-width: 1010px) {
+            @media screen and (max-width: 1133px) {
                 a {
                     padding: 5px 10px;
+
+                    &::after {
+                        width: calc(100% - 20px);
+                    }
                 }
             }
 
@@ -97,7 +111,7 @@
 
     }
 
-    @media screen and (max-width:910px) {
+    @media screen and (max-width:1000px) {
         &__nav {
             display: none;
         }
@@ -140,6 +154,11 @@
 
             .curr {
                 @include flexCenter;
+
+                .curr__text {
+                    @include flexCenter;
+                    width: 25px;
+                }
 
                 &__icon {
                     transform: rotateX(0deg);
@@ -195,7 +214,7 @@
         }
     }
 
-    @media screen and (max-width: 910px) {
+    @media screen and (max-width: 1000px) {
         &__cta {
             &--signup {
                 display: none;
