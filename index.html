@@ -26,6 +26,24 @@
     <link rel="stylesheet" href="dest/style.min.css">
     <link rel="stylesheet" href="dest/fonts.css">
     <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: var(--white-cl);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(190, 166, 124, 0.8);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--prim-cl);
+        }
+
+        /* Loading Page */
         .loading {
             width: 100%;
             height: 100vh;
@@ -514,10 +532,10 @@
         </section>
         <section class="carousel --pb">
             <div class="carousel__img">
-                <img src="img/slider-detail1.jpg" alt="" class="carousel__img--detail">
-                <img src="img/slider-detail2.jpg" alt="" class="carousel__img--detail">
-                <img src="img/slider-detail3.jpg" alt="" class="carousel__img--detail">
-                <img src="img/slider-detail4.png" alt="" class="carousel__img--detail">
+                <img data-flickity-lazyload="img/slider-detail1.jpg" alt="" class="carousel__img--detail">
+                <img data-flickity-lazyload="img/slider-detail2.jpg" alt="" class="carousel__img--detail">
+                <img data-flickity-lazyload="img/slider-detail3.jpg" alt="" class="carousel__img--detail">
+                <img data-flickity-lazyload="img/slider-detail4.png" alt="" class="carousel__img--detail">
                 <img src="img/slider-detail1.jpg" alt="" class="carousel__img--detail">
                 <img src="img/slider-detail2.jpg" alt="" class="carousel__img--detail">
                 <img src="img/slider-detail3.jpg" alt="" class="carousel__img--detail">
@@ -610,7 +628,7 @@
     </footer>
     <div class="signup">
         <div class="outside" onclick="selectOutside()">
-            <form action="#" class="signup__form" onclick="stopPropagation(event)">
+            <div class="signup__form" onclick="stopPropagation(event)">
                 <div class="signup__form--closebtn">
                     <img src="img/icon-close.svg" alt="">
                 </div>
@@ -629,18 +647,18 @@
                     </div>
                     <p class="optional">Or register using</p>
                 </div>
-                <div class="signup__form--bottom">
+                <form action="#" method="POST" class="signup__form--bottom">
                     <div class="form__group">
-                        <input type="text" placeholder="Fullname">
-                        <p class="error-message">This field cannot be empty!</p>
+                        <input type="text" placeholder="Fullname" id="fullname">
+                        <p class="error-message"></p>
                     </div>
                     <div class="form__group">
-                        <input type="text" placeholder="Email address">
-                        <p class="error-message">This field cannot be empty!</p>
+                        <input type="text" placeholder="Email address" id="mail">
+                        <p class="error-message"></p>
                     </div>
                     <div class="form__group">
-                        <input type="text" placeholder="Username">
-                        <p class="error-message">This field cannot be empty!</p>
+                        <input type="text" placeholder="Username" id="username">
+                        <p class="error-message"></p>
                     </div>
                     <div class="form__group --pw">
                         <label for="pw">
@@ -650,7 +668,7 @@
                                 <img src="img/unvisible-pw.svg" alt="" class="eyeslash">
                             </div>
                         </label>
-                        <p class="error-message">This field cannot be empty!</p>
+                        <p class="error-message"></p>
                     </div>
                     <div class="form__group --pw">
                         <label for="cpw">
@@ -660,18 +678,19 @@
                                 <img src="img/unvisible-pw.svg" alt="" class="eyeslash">
                             </div>
                         </label>
-                        <p class="error-message">This field cannot be empty!</p>
+                        <p class="error-message"></p>
                     </div>
-                    <div class="form__checkbox">
+                    <div class="form__group --checkbox">
                         <label for="noti">
                             <input type="checkbox" id="noti" placeholder="Username">
                             <span class="checkmark"></span>
                             Send me special offers, information and recommendations
                         </label>
+                        <p class="error-message"></p>
                     </div>
                     <input type="submit" value="SIGN UP" class="signup__btn">
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
     <div class="popupvideo">

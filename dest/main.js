@@ -161,13 +161,13 @@ dropdownShow();
 function scrollTracker() {
     const scrollTracker = document.querySelector('.scrolltracker__bar--progress');
     const windowHeight = document.querySelector('.homepage').scrollHeight;
-    window.onscroll = function () {
+    window.addEventListener('scroll', function () {
         let coordY = window.scrollY;
         let percent = 100 * coordY / (windowHeight - window.innerHeight);
         scrollTracker.style.width = `${percent}%`;
-    }
+    })
 }
-// scrollTracker();
+scrollTracker();
 
 // Scroll to Top Button
 
@@ -181,7 +181,7 @@ function scrollToTop() {
 }
 scrollToTop();
 
-// Scroll to section (Not yet)
+// Scroll to section
 
 function scrollToSection() {
     const navElement = document.querySelectorAll('.header__nav li a');
@@ -206,7 +206,7 @@ function scrollToSection() {
         })
     })
 
-    window.onscroll = function () {
+    window.addEventListener('scroll', function () {
         let coordY = window.scrollY;
         for (let i = 0; i < (sectionElement.length - 2); i++) {
             if (coordY > sectionElement[i].offsetTop - heightHeader && coordY < sectionElement[i + 1].offsetTop) {
@@ -224,10 +224,7 @@ function scrollToSection() {
             document.querySelector('.footer__backtotopbtn').classList.remove('show');
             document.querySelector('.header').classList.remove('--black');
         }
-
-        let percent = 100 * coordY / (windowHeight - window.innerHeight);
-        scrollTracker.style.width = `${percent}%`;
-    }
+    })
 }
 scrollToSection();
 
@@ -392,7 +389,8 @@ function handleCarousel() {
         pageDots: false,
         prevNextButtons: false,
         wrapAround: true,
-        freeScroll: true
+        freeScroll: true,
+        lazyLoad: 3
     });
 
     flkty.on('scroll', function (progress) {
@@ -440,7 +438,110 @@ window.addEventListener('load', function () {
 
 function formValidation() {
     const inputElement = document.querySelectorAll('.form__group input');
+    const formElement = document.querySelector('.signup__form--bottom');
+    const errorMessage = document.querySelectorAll('.error-message');
+    const emailElement = document.querySelector('#mail');
+    const pwElement = document.querySelector('#pw');
+    const cpwElement = document.querySelector('#cpw');
+    const checkBox = document.querySelector('#noti');
 
+    // Check empty or not
+    function isRequired(element, index) {
+        if (element.value === '') {
+            errorMessage[index].classList.add('--is-empty');
+            errorMessage[index].innerHTML = 'This field cannot be empty!';
+        } else {
+            errorMessage[index].classList.remove('--is-empty');
+            errorMessage[index].innerHTML = '';
+        }
+    }
 
+    // Check is email or not
+
+    function isEmail(element = '') {
+        if (element.includes('@') === false) {
+            errorMessage[1].classList.add('--is-empty');
+            errorMessage[1].innerHTML = 'Please enter a correct email address!';
+        }
+    }
+
+    // Check password 
+    function isPassword(element = '') {
+        // errorMessage[3].classList.add('--is-empty');
+        // errorMessage[3].innerHTML = 'Password contains at least 1 uppercase letter, 1 lowercase letter, a number and a special character (! @ # /)';
+        let regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+        if (element.match(regularExpression)) {
+            console.log('pw is good');
+            errorMessage[3].classList.remove('--is-empty');
+            errorMessage[3].innerHTML = '';
+        } else {
+            console.log('pw is wrong')
+            errorMessage[3].classList.add('--is-empty');
+            errorMessage[3].innerHTML = 'Password contains at least 1 uppercase letter, 1 lowercase letter, a number and a special character (! @ # /)';
+        }
+    }
+
+    function isMatch() {
+        errorMessage[4].classList.add('--is-empty');
+        errorMessage[4].innerHTML = 'Password does not match!';
+    }
+
+    formElement.addEventListener('submit', function (e) {
+        e.preventDefault();
+        inputElement.forEach((param, index) => {
+            isRequired(param, index);
+        })
+        if (checkBox.checked) {
+            console.log('checked');
+            errorMessage[5].classList.remove('--is-empty');
+            errorMessage[5].innerHTML = '';
+        } else {
+            console.log('not checked');
+            errorMessage[5].classList.add('--is-empty');
+            errorMessage[5].innerHTML = 'Please check!';
+        }
+    })
+
+    inputElement.forEach((param, index) => {
+        param.addEventListener('keydown', function () {
+            errorMessage[index].classList.remove('--is-empty');
+            errorMessage[index].innerHTML = '';
+        })
+
+        param.addEventListener('blur', function () {
+            isRequired(param, index);
+        })
+    })
+
+    emailElement.addEventListener('blur', function () {
+        if (emailElement.value !== '') {
+            isEmail(emailElement.value);
+        }
+    })
+
+    pwElement.addEventListener('blur', function () {
+        if (pwElement.value !== '') {
+            isPassword(pwElement.value);
+        }
+    })
+
+    cpwElement.addEventListener('blur', function () {
+        if (cpwElement.value === pwElement.value) {
+            console.log("password matched");
+        }
+        else {
+            isMatch();
+        }
+    })
+
+    checkBox.addEventListener('click', function () {
+        if (checkBox.checked) {
+            errorMessage[5].classList.remove('--is-empty');
+            errorMessage[5].innerHTML = '';
+        } else {
+            errorMessage[5].classList.add('--is-empty');
+            errorMessage[5].innerHTML = 'Please check!';
+        }
+    })
 }
-// formValidation();
+formValidation();

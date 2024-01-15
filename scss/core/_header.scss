@@ -11,7 +11,7 @@
 
     &.--black {
         background-color: var(--black-cl);
-        height: 76px;
+        height: 80px;
     }
 
     .container-fluid {
@@ -173,7 +173,7 @@
             .dropdown {
                 position: absolute;
                 left: 0;
-                top: var(--header-height);
+                top: 80px;
                 background-color: var(--black-cl);
                 @include flexCenter;
                 flex-direction: column;
